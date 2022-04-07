@@ -5416,6 +5416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5b3dfe1b058a549b8435085208ea8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingPower: 100
+  maxPower: 500
+  currentPower: 0
+  powerSlider: {fileID: 0}
+  powerImage: {fileID: 0}
 --- !u!114 &5471734196153336768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5428,6 +5433,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be41c2001566de04ab8a7bed8b7c09fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingSpeed: 100
+  maxSpeed: 500
+  currentSpeed: 0
+  speedSlider: {fileID: 0}
+  speedImage: {fileID: 0}
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 0
