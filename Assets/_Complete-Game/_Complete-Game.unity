@@ -141,13 +141,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14871708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
-  enemy: {fileID: 153412, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 3}
+  enemy: {fileID: 1206665591, guid: 4eba67863f15e554fb15691fd56ad26f, type: 3}
   spawnTime: 15
   spawnPoints:
   - {fileID: 933997770}
@@ -158,13 +158,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14871708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
-  enemy: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 3}
+  enemy: {fileID: 1206665591, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 3}
   spawnTime: 3
   spawnPoints:
   - {fileID: 1725468539}
@@ -175,13 +175,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14871708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
-  enemy: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 3}
+  enemy: {fileID: 1206665591, guid: 2b77cd22a11162849a0c7de731adb986, type: 3}
   spawnTime: 3
   spawnPoints:
   - {fileID: 345275349}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14871708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
-  enemy: {fileID: 1914384308, guid: 3688f3f3f312c984fa78e00c09819e6c, type: 3}
+  enemy: {fileID: 1206665591, guid: 3688f3f3f312c984fa78e00c09819e6c, type: 3}
   spawnTime: 3
   spawnPoints:
   - {fileID: 1725468539}
