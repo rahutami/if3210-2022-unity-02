@@ -14,6 +14,22 @@ public class PlayerPower : MonoBehaviour
 
     public Image powerImage;
 
+    // Create method to change currentPower
+    public void ChangePower(int newPower)
+    {
+        // check if newPower is greater than maxPower
+        if (newPower > maxPower)
+        {
+            // set currentPower to maxPower
+            currentPower = maxPower;
+        }
+        else
+        {
+            // set currentPower to newPower
+            currentPower = newPower;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
