@@ -18,10 +18,10 @@ public class PlayerPower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("The power of revelation");
-        Debug.Log(maxPower);
         currentPower = startingPower;
-        Debug.Log(startingPower);
+        Debug.Log("Ini adalah nilai power");
+        Debug.Log("Max power: " + maxPower);
+        Debug.Log("Current power: " + currentPower);
     }
 
     // Update is called once per frame
