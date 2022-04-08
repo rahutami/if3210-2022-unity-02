@@ -10,6 +10,7 @@ namespace CompleteProject
         EnemyHealth enemyHealth;        // Reference to this enemy's health.
         UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
 
+        public float speed = 1;
 
         void Awake ()
         {
@@ -27,6 +28,7 @@ namespace CompleteProject
             if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
             {
                 // ... set the destination of the nav mesh agent to the player.
+                nav.speed = speed;
                 nav.SetDestination (player.position);
             }
             // Otherwise...
