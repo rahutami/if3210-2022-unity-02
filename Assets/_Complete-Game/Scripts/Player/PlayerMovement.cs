@@ -15,9 +15,12 @@ namespace CompleteProject
         int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
         float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 #endif
+        PlayerSpeed playerSpeedScript = new PlayerSpeed(); // Reference to the PlayerSpeed script to increase its speed
 
         void Awake ()
         {
+            // Initialize speed addition
+            playerSpeedScript.ChangeSpeed(100);
 #if !MOBILE_INPUT
             // Create a layer mask for the floor layer.
             floorMask = LayerMask.GetMask ("Floor");
@@ -48,11 +51,17 @@ namespace CompleteProject
 
         void Move (float h, float v)
         {
+            // Get the currentSpeed from the PlayerSpeed script to add to the speed
+            int currentSpeed = playerSpeedScript.currentSpeed;
+            // Speed Adder is from 1-5.
+            // 500 is the max currentSpeed, 500 -> 5, 100 -> 1
+            int speedAdder = (int)(currentSpeed) / 100;
+
             // Set the movement vector based on the axis input.
             movement.Set (h, 0f, v);
             
             // Normalise the movement vector and make it proportional to the speed per second.
-            movement = movement.normalized * speed * Time.deltaTime;
+            movement = movement.normalized * (speed + speedAdder) * Time.deltaTime;
 
             // Move the player to it's current position plus the movement.
             playerRigidbody.MovePosition (transform.position + movement);

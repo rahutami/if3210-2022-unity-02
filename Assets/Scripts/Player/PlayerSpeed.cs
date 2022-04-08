@@ -14,6 +14,22 @@ public class PlayerSpeed : MonoBehaviour
 
     public Image speedImage;
 
+    // Create method to change currentSpeed
+    public void ChangeSpeed(int newSpeed)
+    {
+        // check if newSpeed is greater than maxSpeed
+        if (newSpeed > maxSpeed)
+        {
+            // set currentSpeed to maxSpeed
+            currentSpeed = maxSpeed;
+        }
+        else
+        {
+            // set currentSpeed to newSpeed
+            currentSpeed = newSpeed;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
