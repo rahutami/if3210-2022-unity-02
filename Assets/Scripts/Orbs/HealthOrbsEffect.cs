@@ -5,6 +5,7 @@ public class HealthOrbsEffect : MonoBehaviour
 {
     PlayerHealth playerHealth;
     float timer;
+    GameObject player;
 
     void Awake ()
     {

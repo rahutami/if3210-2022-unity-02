@@ -18,6 +18,8 @@ namespace CompleteProject
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
+        EnemyManager enemyManager;
+
 
         void Awake ()
         {
@@ -26,6 +28,8 @@ namespace CompleteProject
             enemyAudio = GetComponent <AudioSource> ();
             hitParticles = GetComponentInChildren <ParticleSystem> ();
             capsuleCollider = GetComponent <CapsuleCollider> ();
+
+            enemyManager = FindObjectOfType<EnemyManager>();
 
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
@@ -39,6 +43,27 @@ namespace CompleteProject
             {
                 // ... move the enemy down by the sinkSpeed per second.
                 transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+            }
+        }
+
+        public void TakeDamage(int amount)
+        {
+            // If the enemy is dead...
+            if (isDead)
+                // ... no need to take damage so exit the function.
+                return;
+
+            // Play the hurt sound effect.
+            enemyAudio.Play();
+
+            // Reduce the current health by the amount of damage sustained.
+            currentHealth -= amount;
+
+            // If the current health is less than or equal to zero...
+            if (currentHealth <= 0)
+            {
+                // ... the enemy is dead.
+                Death();
             }
         }
 
@@ -87,6 +112,8 @@ namespace CompleteProject
             enemyAudio.Play ();
 
             StartSinking();
+
+            enemyManager.IncreaseKill();
         }
 
 

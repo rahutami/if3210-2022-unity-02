@@ -28,6 +28,10 @@ public class Spawner : MonoBehaviour
         {
             SpawnEnemy();
         }
+        if (enemyKilled >= enemyAmount)
+        {
+            NextWave();
+        }
     }
 
     private void SpawnEnemy()
