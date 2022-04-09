@@ -5078,8 +5078,8 @@ MonoBehaviour:
   startingHealth: 250
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 10
-  deathClip: {fileID: 0}
+  scoreValue: 50
+  deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
 --- !u!114 &8721550948659669336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5092,6 +5092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea9a6ed18654d14db02bf0076cfe488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &3857293719267797009
 GameObject:
   m_ObjectHideFlags: 0
