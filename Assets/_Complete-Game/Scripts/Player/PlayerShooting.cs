@@ -9,6 +9,12 @@ namespace CompleteProject
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
         public float range = 100f;                      // The distance the gun can fire.
 
+        // Variables to state upgrades: Diagonal and Speed
+        public int numberOfBullets = 1;
+        public int rateOfFire = 1;
+        // Variables to store if upgrade is active
+        public bool canUpgrade = false;
+
 
         float timer;                                    // A timer to determine when to fire.
         Ray shootRay = new Ray();                       // A ray from the gun end forwards.
@@ -21,6 +27,7 @@ namespace CompleteProject
 		public Light faceLight;								// Duh
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
         PlayerPower powerScript = new PlayerPower(); // Reference to the PlayerPower script to increase its damageMultiplier
+        public int angleBetweenBullets = 0;
 
         void Awake ()
         {
@@ -85,49 +92,56 @@ namespace CompleteProject
             Debug.Log("Ini adalah nilai power/damageMultiplier");
             Debug.Log(damageAdded);
 
-            // Reset the timer.
-            timer = 0f;
+            for (int i = 0; i < numberOfBullets; i++) {
+                // spread the bullet according to the angleBetweenBullets
+                float angle = (i * angleBetweenBullets) / 180 * Mathf.PI;
 
-            // Play the gun shot audioclip.
-            gunAudio.Play ();
+                // Reset the timer.
+                timer = 0f;
 
-            // Enable the lights.
-            gunLight.enabled = true;
-			faceLight.enabled = true;
+                // Play the gun shot audioclip.
+                gunAudio.Play ();
 
-            // Stop the particles from playing if they were, then start the particles.
-            gunParticles.Stop ();
-            gunParticles.Play ();
+                // Enable the lights.
+                gunLight.enabled = true;
+                faceLight.enabled = true;
 
-            // Enable the line renderer and set it's first position to be the end of the gun.
-            gunLine.enabled = true;
-            gunLine.SetPosition (0, transform.position);
+                // Stop the particles from playing if they were, then start the particles.
+                gunParticles.Stop ();
+                gunParticles.Play ();
 
-            // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-            shootRay.origin = transform.position;
-            shootRay.direction = transform.forward;
+                // Enable the line renderer and set it's first position to be the end of the gun.
+                gunLine.enabled = true;
+                gunLine.SetPosition (0, transform.position);
 
-            // Perform the raycast against gameobjects on the shootable layer and if it hits something...
-            if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
-            {
-                // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+                // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
+                shootRay.origin = transform.position;
+                shootRay.direction = transform.forward;
 
-                // If the EnemyHealth component exist...
-                if(enemyHealth != null)
+                Quaternion rot = transform.rotation*Quaternion.AngleAxis(angle, Vector3.up);
+
+                // Perform the raycast against gameobjects on the shootable layer and if it hits something...
+                if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
                 {
-                    // ... the enemy should take damage.
-                    enemyHealth.TakeDamage (damagePerShot + damageAdded, shootHit.point);
-                }
+                    // Try and find an EnemyHealth script on the gameobject hit.
+                    EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
 
-                // Set the second position of the line renderer to the point the raycast hit.
-                gunLine.SetPosition (1, shootHit.point);
-            }
-            // If the raycast didn't hit anything on the shootable layer...
-            else
-            {
-                // ... set the second position of the line renderer to the fullest extent of the gun's range.
-                gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+                    // If the EnemyHealth component exist...
+                    if(enemyHealth != null)
+                    {
+                        // ... the enemy should take damage.
+                        enemyHealth.TakeDamage (damagePerShot + damageAdded, shootHit.point);
+                    }
+
+                    // Set the second position of the line renderer to the point the raycast hit.
+                    gunLine.SetPosition (1, shootHit.point);
+                }
+                // If the raycast didn't hit anything on the shootable layer...
+                else
+                {
+                    // ... set the second position of the line renderer to the fullest extent of the gun's range.
+                    gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+                }
             }
         }
     }
