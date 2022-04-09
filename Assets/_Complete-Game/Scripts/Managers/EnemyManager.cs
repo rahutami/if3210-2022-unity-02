@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CompleteProject
@@ -6,14 +7,18 @@ namespace CompleteProject
     public class EnemyManager : MonoBehaviour
     {
         public PlayerHealth playerHealth;       // Reference to the player's heatlh.
-        public GameObject enemy;                // The enemy prefab to be spawned.
-        public float spawnTime = 3f;            // How long between each spawn.
+        public GameObject[] enemyList;                // The enemy prefab to be spawned
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
-        private int waveNum;
-        private int enemyAmount;
-        private int enemyKilled;
+        // anggep aja skeleton 0, bomber 1, boss 2
 
+        int[] enemyWeight = { 1, 2, 5 };
+
+        int waveNum;       
+        int waveWeight;
+        int countWaveWeight;    // to count in while loops spawn
+        int randomInt;
+        int enemyAmount;   
 
         void Start ()
         {
@@ -24,13 +29,13 @@ namespace CompleteProject
 
         void Update()
         {
-            Debug.Log(enemyKilled);
+            //Debug.Log(enemyKilled);
             //Debug.Log(enemyAmount);
-            if (enemyKilled >= enemyAmount)
+            if (playerHealth.currentHealth <= 0) return;
+            if (enemyAmount == 0)
             {
-                Debug.Log("as");
-                StartCoroutine(Delay(3));
-                NextWave();
+                StartCoroutine(NextWave());
+                enemyAmount = 1; // supaya keluar dari update
             }
         }
 
@@ -43,46 +48,58 @@ namespace CompleteProject
                 return;
             }
 
-            // Find a random index between zero and one less than the number of spawn points.
-            int spawnPointIndex = Random.Range (0, spawnPoints.Length);
+            // spawn boss
+            if (waveNum % 3 == 0)
+            {
+                Instantiate(enemyList[2], spawnPoints[2].position, spawnPoints[2].rotation);
+            }
 
-            // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-            Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            // random spawn mobs
+            while (countWaveWeight < waveWeight)
+            {
+                if ((waveWeight - countWaveWeight) == 1)
+                {
+                    randomInt = 0;
+                }
+
+                else
+                {
+                    randomInt = Random.Range(0, enemyWeight.Length - 1);
+                }
+
+                Instantiate(enemyList[randomInt], spawnPoints[randomInt].position, spawnPoints[randomInt].rotation);
+                countWaveWeight += enemyWeight[randomInt];
+                enemyAmount++;
+            }
+
+            enemyAmount--; // adjust
         }
 
-        private void StartWave()
+        void StartWave()
         {
             waveNum = 1;
-            enemyAmount = 2;
-            enemyKilled = 0;
+            waveWeight = 5;
+            countWaveWeight = 0;
+            enemyAmount = 0;
 
-            for (int i = 0; i < enemyAmount; i++)
-            {
-                Spawn();
-            }
+            Spawn();
         }
 
-        public void NextWave()
+        IEnumerator NextWave()
         {
             waveNum += 1;
-            enemyAmount += 2;
-            enemyKilled = 0;
+            waveWeight += 2;
+            countWaveWeight = 0;
 
-            for (int i = 0; i < enemyAmount; i++)
-            {
-                Spawn();
-            }
-        }
+            yield return new WaitForSecondsRealtime(3);
 
-        private IEnumerator Delay(float time)
-        {
-            yield return new WaitForSeconds(time);
+            Spawn();
+            Debug.Log("amount:" + waveWeight);
         }
 
         public void IncreaseKill()
         {
-            enemyKilled++;
-            Debug.Log(enemyKilled);
+            enemyAmount--;
         }
     }
 }
