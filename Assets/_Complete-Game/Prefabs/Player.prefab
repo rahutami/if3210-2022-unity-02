@@ -5146,7 +5146,11 @@ MonoBehaviour:
   damagePerShot: 20
   timeBetweenBullets: 0.12
   range: 100
+  numberOfBullets: 1
+  rateOfFire: 1
+  canUpgrade: 0
   faceLight: {fileID: 10800002}
+  angleBetweenBullets: 0
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 0

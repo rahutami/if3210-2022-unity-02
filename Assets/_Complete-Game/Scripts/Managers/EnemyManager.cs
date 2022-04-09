@@ -74,6 +74,18 @@ namespace CompleteProject
             enemyAmount--; // adjust
         }
 
+        void SpawnSkeleton()
+        {
+            while (countWaveWeight < waveWeight)
+            {
+                Instantiate(enemyList[2], spawnPoints[2].position, spawnPoints[2].rotation);
+                countWaveWeight += enemyWeight[3];
+                enemyAmount++;
+            }
+
+            enemyAmount--; // adjust
+        }
+
         void StartWave()
         {
             waveNum = 1;
