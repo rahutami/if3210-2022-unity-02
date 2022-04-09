@@ -3,9 +3,9 @@ using System.Collections;
 
 public class HealthOrbsEffect : MonoBehaviour
 {
+    GameObject player;
     PlayerHealth playerHealth;
     float timer;
-    GameObject player;
 
     void Awake ()
     {

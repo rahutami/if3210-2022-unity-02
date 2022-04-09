@@ -1,0 +1,24 @@
+{
+  "scores": [
+    {
+      "name": "Tami",
+      "n_wave": 3,
+      "score": 1230
+    },
+    {
+      "name": "Tami1",
+      "n_wave": 3,
+      "time": 1220
+    },
+    {
+      "name": "Tami2",
+      "n_wave": 2,
+      "time": 1000
+    },
+    {
+      "name": "Tami3",
+      "n_wave": 1,
+      "time": 930
+    }
+  ]
+}
