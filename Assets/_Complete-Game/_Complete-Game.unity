@@ -1786,6 +1786,11 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[4]
       value: 
       objectReference: {fileID: 933997770}
+    - target: {fileID: 670299373729774685, guid: f373debe0b2ecc247a4607ff9debd3b3,
+        type: 3}
+      propertyPath: gameMode
+      value: zen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f373debe0b2ecc247a4607ff9debd3b3, type: 3}
 --- !u!1 &664994689

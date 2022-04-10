@@ -135,9 +135,9 @@ namespace CompleteProject
 
             InvokeRepeating("SpawnZombear", 4, 4);
             InvokeRepeating("SpawnZombunny", 4, 4);
-            InvokeRepeating("SpawnSkeleton", 4, 4);
-            InvokeRepeating("SpawnBomber", 4, 4);
-            InvokeRepeating("SpawnBoss", 4, 4);
+            InvokeRepeating("SpawnSkeleton", 6, 6);
+            InvokeRepeating("SpawnBomber", 6, 6);
+            InvokeRepeating("SpawnBoss", 8, 8);
         }
 
         void SpawnZombear()
