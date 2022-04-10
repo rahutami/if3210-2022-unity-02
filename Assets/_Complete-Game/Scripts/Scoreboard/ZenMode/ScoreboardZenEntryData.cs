@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scoreboards{
+namespace CompleteProject{
     [Serializable]
     public struct ScoreboardZenEntryData
     {

@@ -10,7 +10,7 @@ namespace CompleteProject
         public GameObject[] enemyList;                // The enemy prefab to be spawned
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
         public static string gameMode;
-        float zenTime;
+        public static float zenTime;
         float zenThreshold;
         float upgradeTimeThreshold;
 
@@ -18,7 +18,7 @@ namespace CompleteProject
 
         readonly int[] enemyWeight = { 1, 1, 2, 2, 5 };
 
-        public int waveNum;       
+        public static int waveNum;       
         int waveWeight;
         int countWaveWeight;    // to count in while loops spawn
         int randomInt;

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace CompleteProject
 {
     public class GameOverManager : MonoBehaviour
@@ -24,6 +24,7 @@ namespace CompleteProject
             {
                 // ... tell the animator the game is over.
                 anim.SetTrigger ("GameOver");
+                SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             }
         }
     }

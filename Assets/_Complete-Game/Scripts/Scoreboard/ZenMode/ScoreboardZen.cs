@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace Scoreboards
+namespace CompleteProject
 {
     public class ScoreboardZen : MonoBehaviour
     {
@@ -66,6 +66,13 @@ namespace Scoreboards
 
             UpdateUI(savedScores);
 
+            SaveScores(savedScores);
+        }
+
+        [ContextMenu("Remove Entry")]
+        public void RemoveEntry(){
+            ScoreboardZenSaveData savedScores = GetSavedScores();
+            savedScores.highScores.RemoveRange(0, savedScores.highScores.Count);
             SaveScores(savedScores);
         }
 

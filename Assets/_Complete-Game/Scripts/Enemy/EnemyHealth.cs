@@ -32,7 +32,7 @@ namespace CompleteProject
             enemyManager = FindObjectOfType<EnemyManager>();
 
             // add health with wave count
-            startingHealth += (enemyManager.waveNum * 10);
+            startingHealth += (EnemyManager.waveNum * 10);
 
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
