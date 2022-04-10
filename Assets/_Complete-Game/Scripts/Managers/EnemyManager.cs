@@ -56,7 +56,7 @@ namespace CompleteProject
                     Debug.Log("You can upgrade your weapon now");
                     PlayerShooting.canUpgrade = true;
                     Debug.Log("canUpgrade: " + PlayerShooting.canUpgrade);
-                    zenThreshold += 60;
+                    upgradeTimeThreshold += 60f;
                 }
                 
             }
