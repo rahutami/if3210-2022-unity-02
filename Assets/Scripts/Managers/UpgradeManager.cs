@@ -19,7 +19,11 @@ public class UpgradeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Init UI with 0
+        rofSlider.value = 0;
+        diagSlider.value = 0;
+        rofImage.color = Color.clear;
+        diagImage.color = Color.clear;
     }
 
     // Update is called once per frame
