@@ -5,6 +5,7 @@
 
 ## Cara kerja
 ### Attribute Player
+Atribut player masing-masing disimpan di dalam suatu script. Kemudian dimasukkan ke dalam komponen object player.
 ### Orbs
 Dibuat 3 orbs berbeda, yaitu Power Orb, Health Orb, dan Speed Orb yang masing-masing akan menambahkan nilai pada atribut player sesuai dengan namanya. Setiap kali object orb dibuat, object akan men-destroy dirinya 10 detik sejak dibuat dengan menggunakan fungsi Destroy. Kemudian, dibuat OrbsManager yang akan men-generate Orb secara random setiap 10 detik dengan menggunakan fungsi InvokeRepeating.
 
