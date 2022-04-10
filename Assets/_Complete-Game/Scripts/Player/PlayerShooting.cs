@@ -114,11 +114,13 @@ namespace CompleteProject
 
                 // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
                 shootRay.origin = transform.position;
-                //shootRay.direction = transform.forward;
+                shootRay.direction = transform.forward;
 
                 Quaternion rot = transform.rotation*Quaternion.AngleAxis(angle, Vector3.up);
+                //direct = rot.eulerAngles;
+
                 // Convert rot to euler angles and save it in shootRay.direction
-                shootRay.direction = rot.eulerAngles;
+                //shootRay.direction = rot.eulerAngles;
 
                 // Perform the raycast against gameobjects on the shootable layer and if it hits something...
                 if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))

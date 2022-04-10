@@ -31,24 +31,33 @@ public class UpgradeManager : MonoBehaviour
     {
         if (canUpgrade)
         {
-            // Update the UI to 100%
             rofSlider.value = 100;
             rofImage.color = flashColour;
             diagSlider.value = 100;
             diagImage.color = flashColour;
-            // Wait for 'r' to be pressed, than update rateOfFire
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                rateOfFire += 10;
-                canUpgrade = false;
-            }
-            // Wait for 't' to be pressed, then update numberOfBullets and angleBetweenBullets
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                numberOfBullets += 2;
-                angleBetweenBullets = (int)(360 / numberOfBullets);
-                canUpgrade = false;
-            }
+        }
+        if (canUpgrade && Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("UpgradeManager:");
+            Debug.Log(canUpgrade);
+            Debug.Log("Key R is pressed");
+            rateOfFire += 10;
+            canUpgrade = false;
+            rofSlider.value = 0;
+            rofImage.color = Color.clear;
+            diagSlider.value = 0;
+            diagImage.color = Color.clear;
+        }
+        else if (canUpgrade && Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Key T is pressed");
+            numberOfBullets += 2;
+            angleBetweenBullets = (int)(360 / numberOfBullets);
+            canUpgrade = false;
+            rofSlider.value = 0;
+            rofImage.color = Color.clear;
+            diagSlider.value = 0;
+            diagImage.color = Color.clear;
         }
         else {
             // Update the UI to 0%
