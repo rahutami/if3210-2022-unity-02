@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 66924293}
   - component: {fileID: 66924292}
   m_Layer: 5
-  m_Name: Speed
+  m_Name: UpR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2712,7 +2712,7 @@ GameObject:
   - component: {fileID: 873773414}
   - component: {fileID: 873773413}
   m_Layer: 5
-  m_Name: Power
+  m_Name: UpD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4289,6 +4289,26 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4057435073368534559, guid: 4e5a0d387dc27394b81600988ad0216f,
+        type: 3}
+      propertyPath: powerSlider
+      value: 
+      objectReference: {fileID: 1829369011}
+    - target: {fileID: 4057435073368534559, guid: 4e5a0d387dc27394b81600988ad0216f,
+        type: 3}
+      propertyPath: powerImage
+      value: 
+      objectReference: {fileID: 856094285}
+    - target: {fileID: 5471734196153336768, guid: 4e5a0d387dc27394b81600988ad0216f,
+        type: 3}
+      propertyPath: speedSlider
+      value: 
+      objectReference: {fileID: 1679692408}
+    - target: {fileID: 5471734196153336768, guid: 4e5a0d387dc27394b81600988ad0216f,
+        type: 3}
+      propertyPath: speedImage
+      value: 
+      objectReference: {fileID: 561437378}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
 --- !u!1 &1679692406
