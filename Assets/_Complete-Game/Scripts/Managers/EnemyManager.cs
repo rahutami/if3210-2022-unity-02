@@ -9,6 +9,9 @@ namespace CompleteProject
         public PlayerHealth playerHealth;       // Reference to the player's heatlh.
         public GameObject[] enemyList;                // The enemy prefab to be spawned
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
+        public string gameMode;
+        float zenTime;
+        float zenThreshold;
 
         // anggep aja zombear 0, zobunny 1, skeleton 2, bomber 3, boss 4
 
@@ -24,23 +27,42 @@ namespace CompleteProject
         {
             // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
             //InvokeRepeating ("Spawn", spawnTime, spawnTime);
-            StartWave();
+            if (gameMode == "zen")
+            {
+                StartZen();
+            }
+            else
+            {
+                StartWave();
+            }
         }
 
         void Update()
         {
-            //Debug.Log(enemyKilled);
-            //Debug.Log(enemyAmount);
             if (playerHealth.currentHealth <= 0) return;
-            if (waveNum == 16)
+            if (gameMode == "zen")
             {
-                playerHealth.currentHealth = 0;
+                zenTime += Time.deltaTime;
+                if (zenTime > zenThreshold)
+                {
+                    waveNum++;
+                    zenThreshold += zenThreshold;
+                    Debug.Log("wave: " + waveNum);
+                }
             }
-            if (enemyAmount == 0)
+            else
             {
-                StartCoroutine(NextWave());
-                enemyAmount = 1; // supaya keluar dari update
+                if (waveNum == 16)
+                {
+                    playerHealth.currentHealth = 0;
+                }
+                if (enemyAmount == 0)
+                {
+                    StartCoroutine(NextWave());
+                    enemyAmount = 1; // supaya keluar dari update
+                }
             }
+
         }
 
         void Spawn ()
@@ -66,7 +88,7 @@ namespace CompleteProject
                     randomInt = Random.Range(0, 4);
                 }
 
-                Instantiate(enemyList[randomInt], spawnPoints[randomInt].position, spawnPoints[randomInt].rotation);
+                SpawnMobs();
                 countWaveWeight += enemyWeight[randomInt];
                 enemyAmount++;
             }
@@ -74,16 +96,9 @@ namespace CompleteProject
             enemyAmount--; // adjust
         }
 
-        void SpawnSkeleton()
+        void SpawnMobs()
         {
-            while (countWaveWeight < waveWeight)
-            {
-                Instantiate(enemyList[2], spawnPoints[2].position, spawnPoints[2].rotation);
-                countWaveWeight += enemyWeight[3];
-                enemyAmount++;
-            }
-
-            enemyAmount--; // adjust
+            Instantiate(enemyList[randomInt], spawnPoints[randomInt].position, spawnPoints[randomInt].rotation);
         }
 
         void StartWave()
@@ -105,12 +120,49 @@ namespace CompleteProject
             yield return new WaitForSecondsRealtime(3);
 
             Spawn();
-            Debug.Log("amount:" + waveWeight);
         }
 
         public void IncreaseKill()
         {
             enemyAmount--;
+        }
+
+        void StartZen()
+        {
+            zenTime = 0.0f;
+            zenThreshold = 5f;
+            waveNum = 0;
+
+            InvokeRepeating("SpawnZombear", 4, 4);
+            InvokeRepeating("SpawnZombunny", 4, 4);
+            InvokeRepeating("SpawnSkeleton", 4, 4);
+            InvokeRepeating("SpawnBomber", 4, 4);
+            InvokeRepeating("SpawnBoss", 4, 4);
+        }
+
+        void SpawnZombear()
+        {
+            Instantiate(enemyList[0], spawnPoints[0].position, spawnPoints[0].rotation);
+        }
+
+        void SpawnZombunny()
+        {
+            Instantiate(enemyList[1], spawnPoints[1].position, spawnPoints[1].rotation);
+        }
+
+        void SpawnSkeleton()
+        {
+            Instantiate(enemyList[2], spawnPoints[2].position, spawnPoints[2].rotation);
+        }
+
+        void SpawnBomber()
+        {
+            Instantiate(enemyList[3], spawnPoints[3].position, spawnPoints[3].rotation);
+        }
+
+        void SpawnBoss()
+        {
+            Instantiate(enemyList[4], spawnPoints[4].position, spawnPoints[4].rotation);
         }
     }
 }
