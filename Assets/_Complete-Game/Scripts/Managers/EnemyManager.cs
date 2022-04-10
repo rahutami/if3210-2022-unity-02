@@ -72,7 +72,11 @@ namespace CompleteProject
                     enemyAmount = 1; // supaya keluar dari update
                 }
             }
-
+            // enable wave upgrade waveNum % 3 == 1 and waveNum > 3
+            if (waveNum % 3 == 1 && waveNum > 3)
+            {
+                PlayerShooting.canUpgrade = true;
+            }
         }
 
         void Spawn ()
