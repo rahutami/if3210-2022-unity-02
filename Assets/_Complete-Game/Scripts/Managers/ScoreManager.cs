@@ -7,7 +7,9 @@ namespace CompleteProject
     public class ScoreManager : MonoBehaviour
     {
         public static int score;        // The player's score.
-
+        int waveNum;
+        float zenTime;
+        string gameMode;
 
         Text text;                      // Reference to the Text component.
 
@@ -16,6 +18,8 @@ namespace CompleteProject
         {
             // Set up the reference.
             text = GetComponent <Text> ();
+            gameMode = EnemyManager.gameMode;
+
 
             // Reset the score.
             score = 0;
@@ -24,8 +28,18 @@ namespace CompleteProject
 
         void Update ()
         {
-            // Set the displayed text to be the word "Score" followed by the score value.
-            text.text = "Score: " + score;
+            if (gameMode == "zen")
+            {
+                zenTime = EnemyManager.zenTime;
+                // Set the displayed text to be the word "Score" followed by the score value.
+                text.text = "Time: " + zenTime.ToString("0.00");
+            }
+            else
+            {
+                waveNum = EnemyManager.waveNum;
+                // Set the displayed text to be the word "Score" followed by the score value.
+                text.text = "Wave " + waveNum + " - Score: " + score;
+            }
         }
     }
 }
