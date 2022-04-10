@@ -49,6 +49,14 @@ namespace CompleteProject
                     zenThreshold += zenThreshold;
                     Debug.Log("wave: " + waveNum);
                 }
+                // Every 1 minute, enable weapon upgrade
+                if (zenTime % 60 == 0)
+                {
+                    Debug.Log("You can upgrade your weapon now");
+                    PlayerShooting.canUpgrade = true;
+                    Debug.Log("canUpgrade: " + PlayerShooting.canUpgrade);
+                }
+                
             }
             else
             {

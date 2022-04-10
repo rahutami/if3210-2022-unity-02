@@ -13,7 +13,7 @@ namespace CompleteProject
         public int numberOfBullets = 1;
         public int rateOfFire = 1;
         // Variables to store if upgrade is active
-        public bool canUpgrade = false;
+        public static bool canUpgrade = false;
 
 
         float timer;                                    // A timer to determine when to fire.
