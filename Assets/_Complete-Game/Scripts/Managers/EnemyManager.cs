@@ -9,7 +9,7 @@ namespace CompleteProject
         public PlayerHealth playerHealth;       // Reference to the player's heatlh.
         public GameObject[] enemyList;                // The enemy prefab to be spawned
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-        public string gameMode;
+        public static string gameMode;
         float zenTime;
         float zenThreshold;
         float upgradeTimeThreshold;
@@ -43,7 +43,9 @@ namespace CompleteProject
             if (PlayerHealth.currentHealth <= 0) return;
             if (gameMode == "zen")
             {
-                zenTime += Time.deltaTime;
+                if (!PauseManager.isPaused) {
+                    zenTime += Time.deltaTime;
+                }
                 if (zenTime > zenThreshold)
                 {
                     waveNum++;
