@@ -12,6 +12,7 @@ namespace CompleteProject
         public string gameMode;
         float zenTime;
         float zenThreshold;
+        float upgradeTimeThreshold;
 
         // anggep aja zombear 0, zobunny 1, skeleton 2, bomber 3, boss 4
 
@@ -46,15 +47,16 @@ namespace CompleteProject
                 if (zenTime > zenThreshold)
                 {
                     waveNum++;
-                    zenThreshold += zenThreshold;
+                    zenThreshold += 5f;
                     Debug.Log("wave: " + waveNum);
                 }
                 // Every 1 minute, enable weapon upgrade
-                if (zenTime % 60 == 0)
+                if (zenTime > upgradeTimeThreshold)
                 {
                     Debug.Log("You can upgrade your weapon now");
                     PlayerShooting.canUpgrade = true;
                     Debug.Log("canUpgrade: " + PlayerShooting.canUpgrade);
+                    zenThreshold += 60;
                 }
                 
             }
@@ -139,6 +141,7 @@ namespace CompleteProject
         {
             zenTime = 0.0f;
             zenThreshold = 5f;
+            upgradeTimeThreshold = 60f;
             waveNum = 0;
 
             InvokeRepeating("SpawnZombear", 4, 4);
