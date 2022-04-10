@@ -25,6 +25,11 @@ namespace CompleteProject{
             }
             timeText.text = time;
         }
+        
+        public void InitialiseTitle(){
+            nameText.text = "Name";
+            timeText.text = "Time";
+        }
     }
 
 }
