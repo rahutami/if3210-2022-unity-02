@@ -20,7 +20,7 @@ namespace CompleteProject
         void Awake ()
         {
             // Initialize speed addition
-            playerSpeedScript.ChangeSpeed(100);
+            PlayerSpeed.currentSpeed = 100;
 #if !MOBILE_INPUT
             // Create a layer mask for the floor layer.
             floorMask = LayerMask.GetMask ("Floor");
@@ -52,7 +52,7 @@ namespace CompleteProject
         void Move (float h, float v)
         {
             // Get the currentSpeed from the PlayerSpeed script to add to the speed
-            int currentSpeed = playerSpeedScript.currentSpeed;
+            int currentSpeed = PlayerSpeed.currentSpeed;
             // Speed Adder is from 1-5.
             // 500 is the max currentSpeed, 500 -> 5, 100 -> 1
             int speedAdder = (int)(currentSpeed) / 100;

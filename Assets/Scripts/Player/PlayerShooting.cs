@@ -58,7 +58,7 @@ public class PlayerShooting : MonoBehaviour
     {
         Debug.Log("Tes shoot playershooting");
         // Get the current damageMultiplier from the PlayerPower script, scale to 10-100
-        int damageAdded = (int) (damagePerShot * powerScript.currentPower / 100);
+        int damageAdded = (int) (damagePerShot * PlayerPower.currentPower / 100);
         // Debug damageMultiplier
         Debug.Log("Ini adalah nilai power/damageMultiplier");
         Debug.Log(damageAdded);

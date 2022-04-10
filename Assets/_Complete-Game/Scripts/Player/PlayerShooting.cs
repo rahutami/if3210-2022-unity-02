@@ -32,7 +32,7 @@ namespace CompleteProject
         void Awake ()
         {
             // Change powerScript currentPower to 100 with method ChangePower
-            powerScript.ChangePower(100);
+            PlayerPower.currentPower = 100;
 
             // Create a layer mask for the Shootable layer.
             shootableMask = LayerMask.GetMask ("Shootable");
@@ -86,9 +86,9 @@ namespace CompleteProject
 
         void Shoot ()
         {
-            Debug.Log(powerScript.currentPower);
+            Debug.Log(PlayerPower.currentPower);
             Debug.Log(damagePerShot);
-            int damageAdded = (int)(damagePerShot * powerScript.currentPower / 100);
+            int damageAdded = (int)(damagePerShot * PlayerPower.currentPower / 100);
             Debug.Log("Ini adalah nilai power/damageMultiplier");
             Debug.Log(damageAdded);
 
