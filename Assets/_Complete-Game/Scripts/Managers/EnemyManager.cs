@@ -40,7 +40,7 @@ namespace CompleteProject
 
         void Update()
         {
-            if (playerHealth.currentHealth <= 0) return;
+            if (PlayerHealth.currentHealth <= 0) return;
             if (gameMode == "zen")
             {
                 zenTime += Time.deltaTime;
@@ -64,7 +64,7 @@ namespace CompleteProject
             {
                 if (waveNum == 16)
                 {
-                    playerHealth.currentHealth = 0;
+                    PlayerHealth.currentHealth = 0;
                 }
                 if (enemyAmount == 0)
                 {

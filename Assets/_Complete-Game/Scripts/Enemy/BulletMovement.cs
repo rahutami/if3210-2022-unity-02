@@ -28,7 +28,7 @@ public class BulletMovement : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            if (playerHealth.currentHealth > 0)
+            if (PlayerHealth.currentHealth > 0)
             {
                 // ... damage the player.
                 playerHealth.TakeDamage(attackDamage);
