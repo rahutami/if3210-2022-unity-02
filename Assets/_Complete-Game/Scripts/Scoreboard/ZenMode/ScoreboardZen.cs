@@ -60,6 +60,7 @@ namespace Scoreboards
             //Remove any scores past the limit.
             if (savedScores.highScores.Count > maxScoreboardEntries)
             {
+                Debug.Log("removing");
                 savedScores.highScores.RemoveRange(maxScoreboardEntries, savedScores.highScores.Count - maxScoreboardEntries);
             }
 
