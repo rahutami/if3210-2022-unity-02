@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace CompleteProject
 {
     public class ScoreboardWave : MonoBehaviour
@@ -8,11 +8,6 @@ namespace CompleteProject
         [SerializeField] private int maxScoreboardEntries = 5;
         [SerializeField] private Transform highscoresHolderTransform = null;
         [SerializeField] private GameObject scoreboardEntryObject = null;
-
-        [Header("Test")]
-        [SerializeField] private string testEntryName = "New Name";
-        [SerializeField] private int testEntryWave = 0;
-        [SerializeField] private int testEntryScore = 0;
 
         private string SavePath => $"{Application.persistentDataPath}/wave_highscore.json";
 
@@ -23,17 +18,6 @@ namespace CompleteProject
             UpdateUI(savedScores);
 
             SaveScores(savedScores);
-        }
-
-        [ContextMenu("Add Test Entry")]
-        public void AddTestEntry()
-        {
-            AddEntry(new ScoreboardWaveEntryData()
-            {
-                name = testEntryName,
-                wave = testEntryWave,
-                score = testEntryScore
-            });
         }
 
         [ContextMenu("Remove Entry")]
@@ -49,10 +33,9 @@ namespace CompleteProject
 
             bool scoreAdded = false;
 
-            //Check if the score is high enough to be added.
             for (int i = 0; i < savedScores.highScores.Count; i++)
             {
-                if (testEntryScore > savedScores.highScores[i].score)
+                if (scoreboardEntryData.score > savedScores.highScores[i].score)
                 {
                     savedScores.highScores.Insert(i, scoreboardEntryData);
                     scoreAdded = true;
@@ -60,13 +43,11 @@ namespace CompleteProject
                 }
             }
 
-            //Check if the score can be added to the end of the list.
             if (!scoreAdded && savedScores.highScores.Count < maxScoreboardEntries)
             {
                 savedScores.highScores.Add(scoreboardEntryData);
             }
 
-            //Remove any scores past the limit.
             if (savedScores.highScores.Count > maxScoreboardEntries)
             {
                 savedScores.highScores.RemoveRange(maxScoreboardEntries, savedScores.highScores.Count - maxScoreboardEntries);
