@@ -37,7 +37,7 @@ namespace CompleteProject
         public void AddEntry(ScoreboardZenEntryData scoreboardEntryData)
         {
             ScoreboardZenSaveData savedScores = GetSavedScores();
-
+            Debug.Log(scoreboardEntryData.name + scoreboardEntryData.time.ToString());
             bool scoreAdded = false;
 
             //Check if the score is high enough to be added.

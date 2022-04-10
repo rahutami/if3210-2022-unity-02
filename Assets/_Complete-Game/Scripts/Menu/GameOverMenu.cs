@@ -38,12 +38,13 @@ namespace CompleteProject
                 }
                 timeText.text = "Time: " + time;
                 ScoreboardZen scoreboardZen = new ScoreboardZen();
-                scoreboardZen.AddEntry(
-                    new ScoreboardZenEntryData()
+                ScoreboardZenEntryData test =  new ScoreboardZenEntryData()
                     {
                         name = MainMenu.playerName,
                         time = (int) EnemyManager.zenTime
-                    });
+                    };
+                Debug.Log(test.ToString());
+                scoreboardZen.AddEntry(test);
             } else {
                 waveMenu.SetActive(true);
                 zenMenu.SetActive(false);
@@ -51,12 +52,14 @@ namespace CompleteProject
                 waveText.text = "Wave: " + EnemyManager.waveNum;
                 scoreText.text = "Score: " + ScoreManager.score;
                 ScoreboardWave scoreboardWave = new ScoreboardWave();
-                scoreboardWave.AddEntry(new ScoreboardWaveEntryData()
-                {
+                ScoreboardWaveEntryData test =  new ScoreboardWaveEntryData()
+                    {
                     name = MainMenu.playerName,
                     wave = EnemyManager.waveNum,
                     score = ScoreManager.score
-                });
+                    };
+                Debug.Log(test.ToString());
+                scoreboardWave.AddEntry(test);
             }
         }
         public void GoToMainMenu(){
@@ -72,6 +75,8 @@ namespace CompleteProject
         }
         public void SetName(){
             MainMenu.playerName = playerNameInput.text;
+            Debug.Log(MainMenu.playerName);
+            Debug.Log(EnemyManager.gameMode);
             SceneManager.LoadScene("_Complete-Game", LoadSceneMode.Single);
         }
 
