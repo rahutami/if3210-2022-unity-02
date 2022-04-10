@@ -9,6 +9,7 @@ namespace CompleteProject
 {
     public class GameOverMenu : MonoBehaviour
     {
+        public InputField playerNameInput;
         public Text scoreText;
         public Text waveText;
         public Text timeText;
@@ -68,6 +69,18 @@ namespace CompleteProject
         
         public void SetWaveMode(){
             EnemyManager.gameMode = "wave";
+        }
+        public void SetName(){
+            MainMenu.playerName = playerNameInput.text;
+            SceneManager.LoadScene("_Complete-Game", LoadSceneMode.Single);
+        }
+
+        public void BackButton(){
+            if (EnemyManager.gameMode == "zen"){
+                zenMenu.SetActive(true);
+            }else{
+                waveMenu.SetActive(true);
+            }
         }
     }
 }

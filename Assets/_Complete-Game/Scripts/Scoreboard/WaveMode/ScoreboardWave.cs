@@ -72,8 +72,6 @@ namespace CompleteProject
                 savedScores.highScores.RemoveRange(maxScoreboardEntries, savedScores.highScores.Count - maxScoreboardEntries);
             }
 
-            UpdateUI(savedScores);
-
             SaveScores(savedScores);
         }
 
