@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
-    public int currentHealth;
+    public static int currentHealth;
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
