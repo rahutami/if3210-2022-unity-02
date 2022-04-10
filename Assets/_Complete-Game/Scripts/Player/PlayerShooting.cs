@@ -10,8 +10,8 @@ namespace CompleteProject
         public float range = 100f;                      // The distance the gun can fire.
 
         // Variables to state upgrades: Diagonal and Speed
-        public int numberOfBullets = 1;
-        public int rateOfFire = 1;
+        public static int numberOfBullets = 1;
+        public static int rateOfFire = 1;
         // Variables to store if upgrade is active
         public static bool canUpgrade = false;
 
@@ -27,7 +27,7 @@ namespace CompleteProject
 		public Light faceLight;								// Duh
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
         PlayerPower powerScript = new PlayerPower(); // Reference to the PlayerPower script to increase its damageMultiplier
-        public int angleBetweenBullets = 0;
+        public static int angleBetweenBullets = 0;
 
         void Awake ()
         {
@@ -83,6 +83,29 @@ namespace CompleteProject
             gunLight.enabled = false;
         }
 
+        public static void upgradeWeapon()
+        {
+            // if canUpgrade is true and 'r' or 't' is pressed
+            if (canUpgrade) {
+                // if 'r' is pressed...
+                if (Input.GetKeyDown(KeyCode.R)) {
+                    // ... increase rateOfFire by 10
+                    rateOfFire += 10;
+                    // ... set canUpgrade to false
+                    canUpgrade = false;
+                }
+                if (Input.GetKeyDown(KeyCode.T)) {
+                    // ... increase numberOfBullets by 2
+                    numberOfBullets += 2;
+                    // we're gonna spread the bullets diagonally
+                    // ex: 3 bullets, angleBetweenBullets = 45
+                    // ex: 5 bullets, angleBetweenBullets = 30
+                    angleBetweenBullets = (int) (360 / numberOfBullets); 
+                    // ... set canUpgrade to false
+                    canUpgrade = false;
+                }
+            }
+        }
 
         void Shoot ()
         {
