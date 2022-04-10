@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UpgradeManager : MonoBehaviour
 {
     public static bool canUpgrade = false;
-    public static int numberOfBullets = 3;
+    public static int numberOfBullets = 1;
     public static int rateOfFire = 1;
     public static int angleBetweenBullets = 30;
     public Slider rofSlider;
