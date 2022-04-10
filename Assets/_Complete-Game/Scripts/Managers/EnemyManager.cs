@@ -9,9 +9,10 @@ namespace CompleteProject
         public PlayerHealth playerHealth;       // Reference to the player's heatlh.
         public GameObject[] enemyList;                // The enemy prefab to be spawned
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-        public string gameMode;
+        public static string gameMode;
         float zenTime;
         float zenThreshold;
+        float upgradeTimeThreshold;
 
         // anggep aja zombear 0, zobunny 1, skeleton 2, bomber 3, boss 4
 
@@ -39,22 +40,33 @@ namespace CompleteProject
 
         void Update()
         {
-            if (playerHealth.currentHealth <= 0) return;
+            if (PlayerHealth.currentHealth <= 0) return;
             if (gameMode == "zen")
             {
-                zenTime += Time.deltaTime;
+                if (!PauseManager.isPaused) {
+                    zenTime += Time.deltaTime;
+                }
                 if (zenTime > zenThreshold)
                 {
                     waveNum++;
-                    zenThreshold += zenThreshold;
+                    zenThreshold += 5f;
                     Debug.Log("wave: " + waveNum);
                 }
+                // Every 1 minute, enable weapon upgrade
+                if (zenTime > upgradeTimeThreshold)
+                {
+                    Debug.Log("You can upgrade your weapon now");
+                    PlayerShooting.canUpgrade = true;
+                    Debug.Log("canUpgrade: " + PlayerShooting.canUpgrade);
+                    upgradeTimeThreshold += 60f;
+                }
+                
             }
             else
             {
                 if (waveNum == 16)
                 {
-                    playerHealth.currentHealth = 0;
+                    PlayerHealth.currentHealth = 0;
                 }
                 if (enemyAmount == 0)
                 {
@@ -62,7 +74,11 @@ namespace CompleteProject
                     enemyAmount = 1; // supaya keluar dari update
                 }
             }
-
+            // enable wave upgrade waveNum % 3 == 1 and waveNum > 3
+            if (waveNum % 3 == 1 && waveNum > 3)
+            {
+                PlayerShooting.canUpgrade = true;
+            }
         }
 
         void Spawn ()
@@ -131,6 +147,7 @@ namespace CompleteProject
         {
             zenTime = 0.0f;
             zenThreshold = 5f;
+            upgradeTimeThreshold = 60f;
             waveNum = 0;
 
             InvokeRepeating("SpawnZombear", 4, 4);

@@ -18,7 +18,7 @@ public class OrbsManager : MonoBehaviour
 
     void Spawn(){
         // Jika player telah mati maka tidak membuat orb baru
-        // if (playerHealth.currentHealth <= 0f){
+        // if (PlayerHealth.currentHealth <= 0f){
         // return;
         // }
         Debug.Log("newOrb", orb);

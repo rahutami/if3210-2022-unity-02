@@ -62,7 +62,7 @@ namespace CompleteProject
             }
 
             // If the player has zero or less health...
-            if(playerHealth.currentHealth <= 0)
+            if(PlayerHealth.currentHealth <= 0)
             {
                 // ... tell the animator the player is dead.
                 anim.SetTrigger ("PlayerDead");
@@ -76,7 +76,7 @@ namespace CompleteProject
             timer = 0f;
 
             // If the player has health to lose...
-            if(playerHealth.currentHealth > 0)
+            if(PlayerHealth.currentHealth > 0)
             {
                 // ... damage the player.
                 playerHealth.TakeDamage (attackDamage);

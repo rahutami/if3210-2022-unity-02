@@ -9,6 +9,7 @@ using UnityEditor;
 public class PauseManager : MonoBehaviour {
 	
 	public AudioMixerSnapshot paused;
+	public static bool isPaused;
 	public AudioMixerSnapshot unpaused;
 	
 	Canvas canvas;
@@ -16,6 +17,7 @@ public class PauseManager : MonoBehaviour {
 	void Start()
 	{
 		canvas = GetComponent<Canvas>();
+		isPaused = false;
 	}
 	
 	void Update()
@@ -30,6 +32,7 @@ public class PauseManager : MonoBehaviour {
 	public void Pause()
 	{
 		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+		isPaused = !isPaused;
 		Lowpass ();
 		
 	}
