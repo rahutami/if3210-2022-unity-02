@@ -62,7 +62,7 @@ namespace CompleteProject
             {
                 Destroy(child.gameObject);
             }
-
+            Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardZenEntryUI>().InitialiseTitle();
             foreach (ScoreboardZenEntryData highscore in savedScores.highScores)
             {
                 Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardZenEntryUI>().Initialise(highscore);
@@ -74,14 +74,31 @@ namespace CompleteProject
             if (!File.Exists(SavePath))
             {
                 File.Create(SavePath).Dispose();
-                return new ScoreboardZenSaveData();
+                ScoreboardZenSaveData savedData = new ScoreboardZenSaveData();
+                for (int i = 0; i < maxScoreboardEntries; i++){
+                    ScoreboardZenEntryData entry = new ScoreboardZenEntryData(){
+                        name= "Shooter",
+                        time= 0
+                    };
+                    savedData.highScores.Add(entry);
+                }
+                return savedData;
             }
 
             using (StreamReader stream = new StreamReader(SavePath))
             {
                 string json = stream.ReadToEnd();
 
-                return JsonUtility.FromJson<ScoreboardZenSaveData>(json);
+                ScoreboardZenSaveData savedData = JsonUtility.FromJson<ScoreboardZenSaveData>(json);
+
+                while (savedData.highScores.Count < maxScoreboardEntries){
+                    ScoreboardZenEntryData entry = new ScoreboardZenEntryData(){
+                        name= "Shooter",
+                        time= 0
+                    };
+                    savedData.highScores.Add(entry);
+                }
+                return savedData;
             }
         }
 
