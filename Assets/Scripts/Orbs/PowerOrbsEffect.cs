@@ -22,6 +22,9 @@ public class PowerOrbsEffect : MonoBehaviour
         if (other.gameObject == player)
         {
             playerPower.currentPower += 20;
+            if(playerPower.currentPower > playerPower.maxPower){
+                playerPower.currentPower = playerPower.maxPower;
+            }
             Destroy(gameObject);
         }
     }

@@ -21,6 +21,9 @@ public class SpeedOrbsEffect : MonoBehaviour
         if (other.gameObject == player)
         {
             playerSpeed.currentSpeed += 25;
+            if(playerSpeed.currentSpeed > playerSpeed.maxSpeed){
+                playerSpeed.currentSpeed = playerSpeed.maxSpeed;
+            }
             Destroy(gameObject);
         }
     }
