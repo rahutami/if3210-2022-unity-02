@@ -12,6 +12,7 @@ Dibuat 3 orbs berbeda, yaitu Power Orb, Health Orb, dan Speed Orb yang masing-ma
 ### Additional Mobs
 ### Game Mode
 ### Weapon Upgrade
+Terdapat kelas WeaponUpgrade yang akan mengupgrade attribute weapon setiap melewati waktu tertentu (zen mode) atau setiap kali menyelesaikan wave boss (wave mode).
 ### Local Scoreboard
 Score pemain disimpan pada suatu file json terpisah untuk masing-masing mode. Setiap kali pemain menyelesaikan game, score akan disimpan ke file json tersebut. Kemudian, setiap kali pemain memasuki menu scoreboard, nilai yang tersimpan di file json tersebut akan di-load.
 ### Game Over
