@@ -23,6 +23,21 @@ public class PlayerSpeed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // store the old currentSpeed value
+        int oldSpeed = currentSpeed;
+
+        // check if currentSpeed has just been changed
+        if (oldSpeed != currentSpeed)
+        {
+            // if so, update the UI
+            speedSlider.value = currentSpeed;
+            speedImage.color = flashColour;
+        }
+        else
+        {
+            // otherwise, transition the colour back to clear
+            speedImage.color = Color.Lerp(speedImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
         
     }
 }
