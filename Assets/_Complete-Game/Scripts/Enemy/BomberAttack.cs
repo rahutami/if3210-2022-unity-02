@@ -13,6 +13,7 @@ namespace CompleteProject
         PlayerHealth playerHealth;                  // Reference to the player's health.
         EnemyHealth enemyHealth;                    // Reference to this enemy's health.
         bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
+        public ParticleSystem explosion;
 
 
         void Awake()
@@ -61,7 +62,8 @@ namespace CompleteProject
             {
                 // ... damage the player.
                 playerHealth.TakeDamage(attackDamage);
-                enemyHealth.TakeDamage(enemyHealth.currentHealth);
+                explosion.Play();
+                enemyHealth.TakeDamage(enemyHealth.currentHealth);   
             }
         }
     }
