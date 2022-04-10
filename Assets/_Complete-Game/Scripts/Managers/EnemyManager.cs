@@ -151,11 +151,11 @@ namespace CompleteProject
             upgradeTimeThreshold = 60f;
             waveNum = 0;
 
-            //InvokeRepeating("SpawnZombear", 4, 4);
-            //InvokeRepeating("SpawnZombunny", 4, 4);
-            //InvokeRepeating("SpawnSkeleton", 6, 6);
+            InvokeRepeating("SpawnZombear", 4, 4);
+            InvokeRepeating("SpawnZombunny", 4, 4);
+            InvokeRepeating("SpawnSkeleton", 6, 6);
             InvokeRepeating("SpawnBomber", 6, 6);
-            //InvokeRepeating("SpawnBoss", 8, 8);
+            InvokeRepeating("SpawnBoss", 8, 8);
         }
 
         void SpawnZombear()
