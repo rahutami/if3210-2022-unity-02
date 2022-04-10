@@ -23,4 +23,14 @@ Kami tidak menggunakan library eksternal.
 
 
 ## Pembagian kerja anggota kelompok.
-Pembagian kerja terlampir pada link [berikut](https://docs.google.com/document/d/1vSBOwpcp0-wurAHgAQsOfZsRpDUaGRWDQ8l0TopB-2k/edit?usp=sharing)
+1. Gayuh Tri Rahutami (13519192)
+   1. Orbs
+   2. Local Scoreboard
+   3. Main Menu
+   4. Game Over
+2. Ryo Richardo (13519193)
+   1. Additional Mobs
+   2. Game Mode
+3. Allief Nuriman (13519221)
+   1. Attribute Player
+   2. Weapon Upgrade
