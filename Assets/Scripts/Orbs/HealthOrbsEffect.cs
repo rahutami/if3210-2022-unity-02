@@ -10,9 +10,6 @@ public class HealthOrbsEffect : MonoBehaviour
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
-        Debug.Log("playerHealth");
-        Debug.Log(playerHealth);
         Destroy(gameObject, 10.0f);
         
     }
@@ -23,9 +20,9 @@ public class HealthOrbsEffect : MonoBehaviour
         // Set player in range
         if (other.gameObject == player)
         {
-            playerHealth.currentHealth += 10;
-            if(playerHealth.currentHealth > playerHealth.startingHealth){
-                playerHealth.currentHealth = playerHealth.startingHealth;
+            PlayerHealth.currentHealth += 10;
+            if(PlayerHealth.currentHealth > 500){
+                PlayerHealth.currentHealth = 500;
             }
             Destroy(gameObject);
         }

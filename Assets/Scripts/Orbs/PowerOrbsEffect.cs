@@ -4,14 +4,12 @@ using System.Collections;
 public class PowerOrbsEffect : MonoBehaviour
 {
     public GameObject player;
-    PlayerPower playerPower;
     float timer;
 
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
-        playerPower = player.GetComponent <PlayerPower> ();
         Destroy(gameObject, 10.0f);
     }
 
@@ -21,9 +19,9 @@ public class PowerOrbsEffect : MonoBehaviour
         // Set player in range
         if (other.gameObject == player)
         {
-            playerPower.currentPower += 20;
-            if(playerPower.currentPower > playerPower.maxPower){
-                playerPower.currentPower = playerPower.maxPower;
+            PlayerPower.currentPower += 20;
+            if(PlayerPower.currentPower > PlayerPower.maxPower){
+                PlayerPower.currentPower = PlayerPower.maxPower;
             }
             Destroy(gameObject);
         }

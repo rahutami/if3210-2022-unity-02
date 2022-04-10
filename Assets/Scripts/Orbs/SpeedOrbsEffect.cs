@@ -4,13 +4,11 @@ using System.Collections;
 public class SpeedOrbsEffect : MonoBehaviour
 {
     public GameObject player;
-    PlayerSpeed playerSpeed;
     float timer;
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
-        playerSpeed = player.GetComponent <PlayerSpeed> ();
         Destroy(gameObject, 10.0f);
     }
 
@@ -20,9 +18,9 @@ public class SpeedOrbsEffect : MonoBehaviour
         // Set player in range
         if (other.gameObject == player)
         {
-            playerSpeed.currentSpeed += 25;
-            if(playerSpeed.currentSpeed > playerSpeed.maxSpeed){
-                playerSpeed.currentSpeed = playerSpeed.maxSpeed;
+            PlayerSpeed.currentSpeed += 25;
+            if(PlayerSpeed.currentSpeed > PlayerSpeed.maxSpeed){
+                PlayerSpeed.currentSpeed = PlayerSpeed.maxSpeed;
             }
             Destroy(gameObject);
         }
