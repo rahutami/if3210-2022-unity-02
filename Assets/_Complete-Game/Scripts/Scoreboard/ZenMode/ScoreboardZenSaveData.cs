@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace Scoreboards{
+namespace CompleteProject{
     [Serializable]
     public class ScoreboardZenSaveData
     {

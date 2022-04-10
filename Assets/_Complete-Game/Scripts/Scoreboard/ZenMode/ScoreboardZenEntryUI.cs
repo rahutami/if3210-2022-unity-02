@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-namespace Scoreboards{
+namespace CompleteProject{
     public class ScoreboardZenEntryUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI nameText;

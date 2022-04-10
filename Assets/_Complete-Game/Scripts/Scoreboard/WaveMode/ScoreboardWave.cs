@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace Scoreboards
+namespace CompleteProject
 {
     public class ScoreboardWave : MonoBehaviour
     {
@@ -34,6 +34,13 @@ namespace Scoreboards
                 wave = testEntryWave,
                 score = testEntryScore
             });
+        }
+
+        [ContextMenu("Remove Entry")]
+        public void RemoveEntry(){
+            ScoreboardWaveSaveData savedScores = GetSavedScores();
+            savedScores.highScores.RemoveRange(0, savedScores.highScores.Count);
+            SaveScores(savedScores);
         }
 
         public void AddEntry(ScoreboardWaveEntryData scoreboardEntryData)
