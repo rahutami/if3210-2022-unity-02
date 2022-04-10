@@ -62,7 +62,7 @@ namespace CompleteProject
             {
                 Destroy(child.gameObject);
             }
-
+            Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardWaveEntryUI>().InitialiseTitle();
             foreach (ScoreboardWaveEntryData highscore in savedScores.highScores)
             {
                 Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardWaveEntryUI>().Initialise(highscore);
@@ -74,14 +74,33 @@ namespace CompleteProject
             if (!File.Exists(SavePath))
             {
                 File.Create(SavePath).Dispose();
-                return new ScoreboardWaveSaveData();
+                ScoreboardWaveSaveData savedData = new ScoreboardWaveSaveData();
+                while (savedData.highScores.Count < maxScoreboardEntries){
+                    ScoreboardWaveEntryData entry = new ScoreboardWaveEntryData(){
+                        name= "Shooter",
+                        wave= 0,
+                        score=0
+                    };
+                    savedData.highScores.Add(entry);
+                }
+                return savedData;
             }
 
             using (StreamReader stream = new StreamReader(SavePath))
             {
                 string json = stream.ReadToEnd();
 
-                return JsonUtility.FromJson<ScoreboardWaveSaveData>(json);
+                ScoreboardWaveSaveData savedData = JsonUtility.FromJson<ScoreboardWaveSaveData>(json);
+                
+                while (savedData.highScores.Count < maxScoreboardEntries){
+                    ScoreboardWaveEntryData entry = new ScoreboardWaveEntryData(){
+                        name= "Shooter",
+                        wave= 0,
+                        score=0
+                    };
+                    savedData.highScores.Add(entry);
+                }
+                return savedData;
             }
         }
 

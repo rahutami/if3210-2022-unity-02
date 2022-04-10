@@ -13,6 +13,12 @@ namespace CompleteProject{
             waveText.text = entryData.wave.ToString();
             scoreText.text = entryData.score.ToString();
         }
+
+        public void InitialiseTitle(){
+            nameText.text = "Name";
+            waveText.text = "Wave";
+            scoreText.text = "Score";
+        }
     }
 
 }
