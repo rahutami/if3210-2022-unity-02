@@ -92,7 +92,7 @@ namespace CompleteProject
 
             for (int i = 0; i < UpgradeManager.numberOfBullets; i++) {
                 // spread the bullet according to the angleBetweenBullets
-                float angle = (i * UpgradeManager.angleBetweenBullets) / 180 * Mathf.PI;
+                float angle = i * UpgradeManager.angleBetweenBullets - ((UpgradeManager.angleBetweenBullets / 2) * (UpgradeManager.numberOfBullets - 1));
 
                 // Reset the timer.
                 timer = 0f;
@@ -116,11 +116,9 @@ namespace CompleteProject
                 shootRay.origin = transform.position;
                 shootRay.direction = transform.forward;
 
-                Quaternion rot = transform.rotation*Quaternion.AngleAxis(angle, Vector3.up);
-                //direct = rot.eulerAngles;
-
-                // Convert rot to euler angles and save it in shootRay.direction
-                //shootRay.direction = rot.eulerAngles;
+                Quaternion rot = transform.rotation * Quaternion.AngleAxis(angle, Vector3.up);
+                // Use the "rot" variable to change the direction of the ray to the angle of the bullet
+                shootRay.direction = rot * shootRay.direction;
 
                 // Perform the raycast against gameobjects on the shootable layer and if it hits something...
                 if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
