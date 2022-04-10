@@ -13,7 +13,6 @@ namespace CompleteProject
         public static int numberOfBullets = 1;
         public static int rateOfFire = 1;
         // Variables to store if upgrade is active
-        public static bool canUpgrade = false;
 
 
         float timer;                                    // A timer to determine when to fire.
@@ -83,30 +82,6 @@ namespace CompleteProject
             gunLight.enabled = false;
         }
 
-        public static void upgradeWeapon()
-        {
-            // if canUpgrade is true and 'r' or 't' is pressed
-            if (canUpgrade) {
-                // if 'r' is pressed...
-                if (Input.GetKeyDown(KeyCode.R)) {
-                    // ... increase rateOfFire by 10
-                    rateOfFire += 10;
-                    // ... set canUpgrade to false
-                    canUpgrade = false;
-                }
-                if (Input.GetKeyDown(KeyCode.T)) {
-                    // ... increase numberOfBullets by 2
-                    numberOfBullets += 2;
-                    // we're gonna spread the bullets diagonally
-                    // ex: 3 bullets, angleBetweenBullets = 45
-                    // ex: 5 bullets, angleBetweenBullets = 30
-                    angleBetweenBullets = (int) (360 / numberOfBullets); 
-                    // ... set canUpgrade to false
-                    canUpgrade = false;
-                }
-            }
-        }
-
         void Shoot ()
         {
             Debug.Log(PlayerPower.currentPower);
@@ -115,9 +90,9 @@ namespace CompleteProject
             Debug.Log("Ini adalah nilai power/damageMultiplier");
             Debug.Log(damageAdded);
 
-            for (int i = 0; i < numberOfBullets; i++) {
+            for (int i = 0; i < UpgradeManager.numberOfBullets; i++) {
                 // spread the bullet according to the angleBetweenBullets
-                float angle = (i * angleBetweenBullets) / 180 * Mathf.PI;
+                float angle = (i * UpgradeManager.angleBetweenBullets) / 180 * Mathf.PI;
 
                 // Reset the timer.
                 timer = 0f;
@@ -139,9 +114,11 @@ namespace CompleteProject
 
                 // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
                 shootRay.origin = transform.position;
-                shootRay.direction = transform.forward;
+                //shootRay.direction = transform.forward;
 
                 Quaternion rot = transform.rotation*Quaternion.AngleAxis(angle, Vector3.up);
+                // Convert rot to euler angles and save it in shootRay.direction
+                shootRay.direction = rot.eulerAngles;
 
                 // Perform the raycast against gameobjects on the shootable layer and if it hits something...
                 if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))

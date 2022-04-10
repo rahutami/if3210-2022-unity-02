@@ -56,8 +56,8 @@ namespace CompleteProject
                 if (zenTime > upgradeTimeThreshold)
                 {
                     Debug.Log("You can upgrade your weapon now");
-                    PlayerShooting.canUpgrade = true;
-                    Debug.Log("canUpgrade: " + PlayerShooting.canUpgrade);
+                    UpgradeManager.canUpgrade = true;
+                    Debug.Log("canUpgrade: " + UpgradeManager.canUpgrade);
                     upgradeTimeThreshold += 60f;
                 }
                 
@@ -78,7 +78,7 @@ namespace CompleteProject
             // enable wave upgrade waveNum % 3 == 1 and waveNum > 3
             if (waveNum % 3 == 1 && waveNum > 3)
             {
-                PlayerShooting.canUpgrade = true;
+                UpgradeManager.canUpgrade = true;
             }
         }
 
