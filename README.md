@@ -30,7 +30,22 @@ Setiap nyawa player mencapai 0, GameOverManager akan me-load scene Game Over yan
 Kami tidak menggunakan library eksternal.
 
 ## Screenshot aplikasi (dimasukkan dalam folder screenshot).
-
+### Main Menu
+![main menu](./screenshots/main_menu.jpg "Main Menu") 
+### Input Name
+![input name](./screenshots/input_name.jpg "Input Name") 
+### Zen Mode
+![zen mode](./screenshots/zen_mode.jpg "Zone Mode") 
+### Wave Mode
+![wave mode](./screenshots/wave_mode.jpg "Wave Mode") 
+### Game Over Zen Mode
+![game over zen mode](./screenshots/game_over_zen_mode.jpg "Game Over Zen Mode") 
+### Game Over Wave Mode
+![game over wave mode](./screenshots/game_over_wave_mode.jpg "Game Over Wave Mode") 
+### Scoreboard Zen Mode
+![Scoreboard zen mode](./screenshots/scoreboard_zen_mode.jpg "Scoreboard Zen Mode") 
+### Scoreboard Wave Mode
+![Scoreboard wave mode](./screenshots/scoreboard_wave_mode.jpg "Scoreboard Wave Mode") 
 
 ## Pembagian kerja anggota kelompok.
 1. Gayuh Tri Rahutami (13519192)
