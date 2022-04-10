@@ -5,7 +5,7 @@ using UnityEngine;
 public class OrbsManager : MonoBehaviour
 {
     public GameObject player;
-    public float spawnTime = 10f;
+    float spawnTime = 30.0f;
     public float timeSinceSpawn;
     public Transform[] spawnPoints;
     public GameObject orb;
@@ -17,15 +17,14 @@ public class OrbsManager : MonoBehaviour
     }
 
     void Spawn(){
-        //Jika player telah mati maka tidak membuat enemy baru
+        // Jika player telah mati maka tidak membuat orb baru
         // if (playerHealth.currentHealth <= 0f){
         // return;
         // }
-
+        Debug.Log("newOrb", orb);
         //Mendapatkan nilai random
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-        Instantiate(orb, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        Debug.Log(spawnPointIndex);
+        GameObject newOrb = (GameObject) Instantiate(orb, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
     }
 }
