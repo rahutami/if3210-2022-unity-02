@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eae1386f81aaa54fa35c2a175a25b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameInput: {fileID: 0}
+  playerNameInput: {fileID: 468842008}
   scoreText: {fileID: 388549137}
   waveText: {fileID: 1596305895}
   timeText: {fileID: 2046983203}
@@ -1472,7 +1472,6 @@ GameObject:
   - component: {fileID: 1853147987}
   - component: {fileID: 1853147986}
   - component: {fileID: 1853147985}
-  - component: {fileID: 1853147984}
   m_Layer: 5
   m_Name: Input Name
   m_TagString: Untagged
@@ -1480,19 +1479,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1853147984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853147983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786a7c8930c4e4b4bb629fd0ad08f423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNameInput: {fileID: 468842008}
 --- !u!114 &1853147985
 MonoBehaviour:
   m_ObjectHideFlags: 0
